@@ -3,6 +3,8 @@ package com.d1create.libmanager;
 
 import java.util.ArrayList;
 
+import com.d1create.libmanager.commands.add;
+import com.d1create.libmanager.commands.help;
 import com.d1create.libmanager.utils.Basic;
 import com.d1create.libmanager.utils.Book;
 import com.d1create.libmanager.utils.BookHandler;
@@ -25,12 +27,10 @@ public class Main {
             String cur_arguement = args[i];
 
             if(cur_arguement.equals("-h") || cur_arguement.equals("--help")){
-                Basic.print("-a AddBook(Title,Description,ReleaseYear)");
+                help.DoCommand();
             }
-            else if(cur_arguement.equals("-a")){//TODO
-                short argument_introduction_index=(short) basic_func.CharFirstAppearance(cur_arguement,'a');
-                String arguement_detail = cur_arguement.substring(basic_func.CharFirstAppearance(cur_arguement,'a'), cur_arguement.length());
-
+            else if(cur_arguement.equals("-a")){
+                add.DoCommand(cur_arguement);
             }
         }
 

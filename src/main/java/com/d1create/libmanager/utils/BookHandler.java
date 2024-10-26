@@ -11,15 +11,15 @@ public class BookHandler {
     //save all books to a file using a FileWriter
     public void SaveBooks(ArrayList<Book> books, String RAW_save_path) {
         try {
-            File SaveFile = new File(RAW_save_path + ".txt");
-            FileWriter BookWriter = new FileWriter(SaveFile);
+            File save_file = new File(RAW_save_path + ".txt");
+            FileWriter book_writer = new FileWriter(save_file);
             for (int i = 0; i < books.size(); i++) {
-                Book Cur_Book = books.get(i);
+                Book cur_book = books.get(i);
                 //basically, the line will go like [book1name-book1desc-book1year!book2name-book2desc-book1year]
                 //yes, why not make an overly complicated and useless system
-                BookWriter.write(Cur_Book.name() + "-" + Cur_Book.description() + "-"+ String.valueOf(Cur_Book.year_released()) + "!");
+                book_writer.write(cur_book.name() + "-" + cur_book.description() + "-"+ String.valueOf(cur_book.year_released()) + "!");
             }
-            BookWriter.close();
+            book_writer.close();
         } catch (IOException ioex) {
             ioex.printStackTrace();
             Basic.print("Something went wrong when writing the data!");
@@ -74,11 +74,11 @@ public class BookHandler {
         try{
             File file = new File(path);
             FileReader reader = new FileReader(file);
-            char[] fileContents = new char[(int) file.length()];
-            reader.read(fileContents);
+            char[] file_contents = new char[(int) file.length()];
+            reader.read(file_contents);
             reader.close();
 
-            return fileContents;
+            return file_contents;
         }
         catch(Exception e){
             e.printStackTrace();
