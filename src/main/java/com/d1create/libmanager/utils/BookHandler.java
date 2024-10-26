@@ -1,6 +1,7 @@
 package com.d1create.libmanager.utils;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -57,7 +58,7 @@ public class BookHandler {
                 else{
                     if(num_dash==0){title += charachter;}
                     else if(num_dash==1){description += charachter;}
-                    else if(num_dash==2){release_year += (short) charachter;}
+                    else if(num_dash==2){release_year += Short.parseShort(String.valueOf(charachter));}
                 }
             }
         }
@@ -79,6 +80,11 @@ public class BookHandler {
             reader.close();
 
             return file_contents;
+        }
+        catch(FileNotFoundException FNFE){
+            FNFE.printStackTrace();
+            System.out.println("A file couldn't be found");
+            return new char[0];//return empty array if case of exception
         }
         catch(Exception e){
             e.printStackTrace();
